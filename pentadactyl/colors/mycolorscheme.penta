@@ -1,0 +1,83 @@
+"hi StatusLine background:#f0f0f0 !important; padding: 0 2px;
+"hi StatusLineBroken background:#f0f0f0 !important;
+"hi StatusLineSecure background:#f0f0f0 !important;
+"hi StatusLineExtended background:#f0f0f0 !important;
+"hi CmdLine padding: 1px !important;
+"hi Normal color: black !important; background: white !important; font-weight: normal !important;font-family: verdana !important;
+"hi CompTitle color: #6DA335; background: #f0f0f0; font-weight: bold;
+"hi CompTitleSep height: 1px; background: -moz-linear-gradient(60deg, #6DA335, white);
+hi Title color: #6DA335; background: white; font-weight: bold;
+hi Preview color: #4B9CEB;
+hi ErrorMsg color: red !important; background-color: #f0f0f0 !important;
+
+"set the color of / find
+"hint mode color
+"======================================================================
+
+"hi Hint font-family: monospace; font-weight: bold; font-size: 15px; text-transform: uppercase; color: white; background-color: red; padding:1px;
+hi Hint font-family: monospace; font-weight: bold; font-size: 15px; text-transform: uppercase; color: red; background-color: yellow; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px; 
+
+hi Hint::after content: attr(number);
+
+"hi HintActive background-color: #88FF00; color: black;
+"hi HintActive background-color: #50EC50; color: black;
+hi HintActive background-color: #00EC00; color: black;
+
+"hi HintElem background-color: yellow; color: black;
+"hi HintElem background-color: transparent; color: black;
+hi HintElem background-color: transparent; 
+
+hi HintImage            opacity: .5;
+
+hi StatusModeMsg -a color: green !important;
+
+"hi Key color: yellow; background-color: green;
+
+"======================================================================
+
+"do not display the icons on the tabs
+style! -name tabicons chrome://* <<EOM
+.tab-icon-image {
+display: none !important;
+}
+
+#main-window[sizemode="maximized"][chromemargin]:not([inFullscreen]) 
+#titlebar {
+  position: fixed !important;
+}
+
+/* 调整标签栏/导航栏的位置 */
+#main-window[sizemode="maximized"][tabsontop="true"][chromemargin]:not([inFullscreen]) 
+#TabsToolbar,
+#main-window[sizemode="maximized"][tabsontop="false"][chromemargin]:not([inFullscreen]) 
+#nav-bar{
+  padding-top: 5px !important;
+  padding-left:25px !important;
+  padding-right: 6px !important;
+}
+
+/* 隐藏最小化/最大化/关闭按钮 */
+#main-window[sizemode="maximized"][chromemargin]:not([inFullscreen]) 
+#titlebar-buttonbox{display:none !important;}
+
+/* 调整火狐橙尺寸 */
+#main-window[sizemode="maximized"][chromemargin]:not([inFullscreen]) 
+#appmenu-button {
+  min-width:1px !important;
+  height:0px !important;
+  width:0px !important;
+  margin: 0px 0px 0px 0px   !important;
+  color: transparent !important;
+  text-shadow: none !important;
+  border:none !important;
+}
+
+#main-window[sizemode="maximized"][chromemargin]:not([inFullscreen]) #appmenu-button .button-menu-dropmarker {
+  display: none !important;
+} 
+
+#urlbar #urlbar-container {
+display: none !important;
+}
+
+EOM

@@ -1,0 +1,25 @@
+set go+=frmb
+
+noremap ; :
+mnoremap ; :
+
+noremap x :tabclose<CR>
+mnoremap x :tabclose<CR>
+
+noremap h gT
+mnoremap h :tabprevious<CR>
+noremap l gt
+mnoremap l :tabnext<CR>
+
+mnoremap d <Esc>d
+
+mnoremap j <Right>
+mnoremap k <Left>
+mnoremap J j
+mnoremap K k
+
+noremap zz ZZ
+mnoremap zz <Esc>ZZ
+noremap zr :restart<CR>
+mnoremap zr :restart<CR>
+

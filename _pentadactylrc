@@ -1,0 +1,175 @@
+"set guioptions=rbmT
+set go=n
+"m    Menubar
+"T    Toolbar
+"B    Bookmark bar
+"n    Tab number
+"N    Tab number over image
+"b    Bottom scrollbar
+"r    Right scrollbar
+"l    Left scrollbar
+
+""set mapleader='.'
+
+colorscheme mycolor
+set hlfind
+set hintkeys=;asdfghjkl
+set hinttimeout=1200
+
+"auto-complete
+set complete=sbh
+"set autocomplete
+"set altwildmode
+
+noremap <Leader>s :so ~/_pentadactylrc<CR>
+
+"<count>gt 可以快速的切换标签，类似<count>b 
+nnoremap h gT
+nnoremap l gt
+
+"下条命令和上条命令效果一样，在muttator中可能需要关注下
+"nnoremap l :tabprevious<CR>
+nnoremap j 20j
+nnoremap k 20k
+
+"tabs group switch
+nnoremap <C-n> <C-`> 
+nnoremap <C-p> <C-S-`>
+nnoremap <S-e> <C-S-e>
+
+nnoremap J :js nextPage.next(true)<CR>
+nnoremap K :js nextPage.prev()<CR>
+
+"将y与Y互换,n下y复制选择内容，Y复制当前网址，v下y复制选中内容
+nnoremap y Y
+nnoremap Y y
+vnoremap y y<Esc><Esc>
+
+"将p与P互换,用p来新标签页打开剪切板中的内容，P为当前标签
+nnoremap p P
+nnoremap P p
+
+"将gg与G互换
+""nnoremap gg G
+""nnoremap G gg
+
+"set 上一页，下一页模式，这样可以使用]],[[来快速翻页
+set previouspattern=\s*下一页|下一张|下一篇|下一頁|下页|后页\s*,^\\bnext\\b,\\bnext\\b,^>$,^(>>|››|»)$,^(>|»),(>|»)$,\\bmore\\b
+set nextpattern=\s*上一页|上一张|上一篇|上一頁|上页|前页\s*,^\\bprev|previous\\b,\\bprev|previous\\b,^<$,^(<<|‹‹|«)$,^(<|«),(<|«)$
+
+
+"隐藏状态栏
+"参数不对，status-bar还有一点作用map <Leader>n :js document.getElementById('statusbarpanel').collapsed ^= 1<CR>
+
+noremap <Leader>n :set go!=s<CR>
+""noremap <Leader>r :set go!=r<CR>
+
+"隐藏tab标签
+"set showtabline=never"
+:js document.getElementById('navigator-toolbox').collapsed=1;
+noremap <Leader>t :js document.getElementById('navigator-toolbox').collapsed ^= 1<CR>
+
+"隐藏menubar
+noremap <Leader>m :set go!=mT<CR>
+
+"inactive ime-input in commandline status
+"style -name commandline-ime chrome://* #dactyl-commandline-command input {ime-mode: inactive;}
+
+
+
+"映射vv为<esc>
+inoremap <Leader>v <Esc>
+cnoremap <Leader>v <Esc>
+vnoremap <Leader>v <Esc><Esc>
+"hint mode
+map -modes hints <Leader>v -ex normal <Esc>
+
+
+"map i -> gi
+nnoremap i gi
+nnoremap <Leader>i i
+
+"map v -> iv
+nnoremap v iv
+
+"map ; -> :
+nnoremap ; :
+
+"map , -> ;
+nnoremap , ;
+
+
+"添加书签快捷键
+nnoremap a :dia addbookmark<CR>
+
+"将x映射为:tabclose以关闭某个标签,其实这个没啥用，比如可以2bd = x2<CR>,后者可以不切换当前页面
+""nnoremap x :tabclose 
+
+"dtab close
+nnoremap -c -ex d tabclose <count>
+
+"将\d映射为下载dialogue
+noremap <Leader>d :dia downloads<CR>
+inoremap <Leader>d :dia downloads<CR>
+
+"将cd映射为清空数据dialogue
+noremap cd :sanitize history -timespan all<CR>
+
+"将ck映射为检查更新dialogue
+noremap ck :dia about<CR>
+
+"将ex映射为addons dialogue
+noremap ex :dia addons<CR>
+
+"将\b映射为书签管理器
+noremap <Leader>b <C-S-b>
+noremap <Leader>bb :tabopen about:mybookmarks<CR>
+
+"将s映射为history dialogue
+noremap s :dia history<CR>
+
+"映射pt为打印
+noremap <Leader>pt <C-v><C-p>
+
+"映射pr为preferences
+noremap <Leader>pr :dia preferences<CR>
+
+"重启firefox
+noremap zr :restart<CR>
+
+"close firefox
+noremap zz ZZ
+
+"查词典
+"command! dict -nargs=* tabopen http://dict.cn/<args>
+"map <silent> w :exe ":dict "+content.getSelection()<CR>
+
+"Google search
+command! gs -nargs=* tabopen http://www.google.com.hk/search?9&q=<args>
+nnoremap w :exe ":gs "+content.getSelection()<CR>
+
+"iexpoler
+command! ie -js io.run("C:\\Program\ Files\\Internet\ Explorer\\iexplore.exe", [buffer.URL])
+noremap <Leader>e :exe ":ie"<CR>
+
+"save all images to path directly
+""map -modes=n,v  si  :save-images D:\\Downloads\\pics<Return>
+
+"save all images to path than be set at command line
+""map -modes=n,v  nsi  :save-images D:\\Downloads\\pics\\
+
+"隐藏标题栏"
+""js <<EOF
+""(function() {
+""
+""   var win_ctrl = document.getElementById("window-controls");
+""   win_ctrl.setAttribute("fullscreencontrol", "false");
+""   win_ctrl.setAttribute("hidden", "false");
+""
+""   var mainWindow = document.getElementById("main-window");
+""   mainWindow.setAttribute("hidechrome", "true");
+""
+""        window.maximize();
+""})();
+""EOF
+
